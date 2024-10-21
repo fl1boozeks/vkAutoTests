@@ -8,16 +8,10 @@ export async function clickLoginButton(page, expect) {
     await loginButton.click()
 }
 
-export async function createAccountButton(page, expect) {
-    const createAccountButton = page.locator('button.FlatButton--positive[type="button"]')
-    await expect(createAccountButton).toBeVisible()
-    await createAccountButton.click()
-}
-
-export async function createBusinessAccountButton(page, expect) {
-    const createBusinessAccountButton = page.locator('button.FlatButton--accent-outline[type="button"]') 
-    await expect(createBusinessAccountButton).toBeVisible()
-    await createBusinessAccountButton.click()
+export async function clickButton(page, expect, buttonLocator) {
+    const button = page.locator(buttonLocator)
+    await expect(button).toBeVisible()
+    await button.click()
 }
 
 export async function checkErrorMessage(page, expect, expectedText) {
