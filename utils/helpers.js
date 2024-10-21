@@ -3,12 +3,18 @@ export async function navigateToVK(page) {
 }
 
 export async function clickLoginButton(page, expect) {
-    const loginButton = page.locator('button.FlatButton--primary[type="submit"]')
+    const loginButton = page.getByRole('button', {name: 'Войти'}) 
     await expect(loginButton).toBeVisible()
     await loginButton.click()
 }
 
 export async function clickButton(page, expect, buttonLocator) {
+    const button = page.locator(buttonLocator)
+    await expect(button).toBeVisible()
+    await button.click()
+}
+
+export async function checkMarketButtons(page, expect, buttonLocator) {
     const button = page.locator(buttonLocator)
     await expect(button).toBeVisible()
     await button.click()
