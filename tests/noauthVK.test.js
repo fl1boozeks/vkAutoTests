@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test'
-import { navigateToVK, clickLoginButton, checkErrorMessage, clickCheckBox, clickCreateAccountButton } from '../utils/helpers'
+import { navigateToVK, clickLoginButton, checkErrorMessage, clickCheckBox, createAccountButton, createBusinessAccountButton } from '../utils/helpers'
 
 test('Should click on the login button', async ({page}) => {
     await navigateToVK(page)
@@ -9,7 +9,12 @@ test('Should click on the login button', async ({page}) => {
 
 test('Should click on the create account button', async ({page}) => {
     await navigateToVK(page)
-    await clickCreateAccountButton(page, expect)
+    await createAccountButton(page, expect)
+})
+
+test('Should click on the create business account button', async ({page}) => {
+    await navigateToVK(page)
+    await createBusinessAccountButton(page, expect)
 })
 
 test('Should click on the checkbox', async ({page}) => {
