@@ -1,5 +1,5 @@
 import {test, expect} from '@playwright/test'
-import { navigateToVK, clickLoginButton, checkErrorMessage, clickCheckBox, clickButton, checkMarketButtons } from '../utils/helpers'
+import { navigateToVK, clickLoginButton, checkErrorMessage, clickCheckBox, clickButton, checkMarketButtons, cancelSearch } from '../utils/helpers'
 
 const authButtons = [
     { name: 'create account', locator: 'button.FlatButton--positive[type="button"]' },
@@ -37,3 +37,6 @@ test('Should click on the checkbox', async ({page}) => {
     await clickCheckBox(page, expect)
 })
 
+test('Should cancel search input after filling', async ({page}) => {
+    await cancelSearch(page, expect)
+})

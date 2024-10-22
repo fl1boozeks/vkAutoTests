@@ -30,3 +30,11 @@ export async function clickCheckBox(page, expect) {
     await expect(checkboxIsClickable).toBeVisible()
     await checkboxIsClickable.click()
 }
+
+export async function cancelSearch(page, expect) {
+    const cancel = page.locator('.vkuiTappable__stateLayer')
+    await page.getByLabel('Поиск').fill('Дуров')
+    await expect(cancel).toBeVisible()
+    await cancel.click()
+    await expect(page.getByLabel('Поиск')).toHaveValue('')
+}
