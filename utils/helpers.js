@@ -38,3 +38,10 @@ export async function cancelSearch(page, expect) {
     await cancel.click()
     await expect(page.getByLabel('Поиск')).toHaveValue('')
 }
+
+export async function checkSearch(page, expect, expectedTitle) {
+    const search = page.locator('.vkuiSearch__label')
+    await expect(search).toBeVisible()
+    await search.press('Enter')
+    await expect(page).toHaveTitle(expectedTitle)
+}
