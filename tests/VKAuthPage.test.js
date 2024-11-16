@@ -44,3 +44,13 @@ test('A window with a list of all languages should pop up', async ({page}) => {
     await vkAuthPage.clickOnChooseLanguageButton()
     await expect(vkAuthPage.popupWithLanguages).toBeVisible()
 })
+
+test.only('The popup should close when click on the close button', async ({page}) => {
+    const vkAuthPage = new VKAuthPage(page)
+
+    await vkAuthPage.goto()
+    await vkAuthPage.clickOnChooseLanguageButton()
+    await expect(vkAuthPage.popupWithLanguages).toBeVisible()
+    await vkAuthPage.clickOnClosePopupWithLanguagesButton()
+    await expect(vkAuthPage.popupWithLanguages).not.toBeVisible()
+})

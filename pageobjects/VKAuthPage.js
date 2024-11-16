@@ -16,6 +16,7 @@ exports.VKAuthPage = class VKAuthPage {
         this.checkboxSaveUser = page.locator('.VkIdCheckbox__label')
         this.chooseLanguageButton = page.locator('#index_footer_wrap .footer_lang_link', {hasText: 'все языки »'})
         this.popupWithLanguages = page.locator('.box_layout')
+        this.closePopupWithLanguagesButton = page.locator('.FlatButton__in', {hasText: 'Закрыть'})
     }
 
     async goto() {
@@ -50,5 +51,9 @@ exports.VKAuthPage = class VKAuthPage {
 
     async clickOnChooseLanguageButton() {
         await this.chooseLanguageButton.click()
+    }
+
+    async clickOnClosePopupWithLanguagesButton() {
+        await this.closePopupWithLanguagesButton.click()
     }
 }
