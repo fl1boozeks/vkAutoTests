@@ -14,6 +14,8 @@ exports.VKAuthPage = class VKAuthPage {
         this.createAccountButton = page.getByRole('button', {name: 'Создать аккаунт'})
         this.createBusinessAccountButton = page.getByRole('button', {name: 'Создать страницу для бизнеса'})
         this.checkboxSaveUser = page.locator('.VkIdCheckbox__label')
+        this.chooseLanguageButton = page.locator('#index_footer_wrap .footer_lang_link', {hasText: 'все языки »'})
+        this.popupWithLanguages = page.locator('.box_layout')
     }
 
     async goto() {
@@ -44,5 +46,9 @@ exports.VKAuthPage = class VKAuthPage {
 
     async clickOnCheckbox() {
         await this.checkboxSaveUser.click()
+    }
+
+    async clickOnChooseLanguageButton() {
+        await this.chooseLanguageButton.click()
     }
 }

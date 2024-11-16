@@ -1,4 +1,4 @@
-const {test} = require('@playwright/test')
+const {test, expect} = require('@playwright/test')
 const {VKAuthPage} = require('../pageobjects/VKAuthPage')
 
 test('Should click on the login button and check error message', async ({page}) => {
@@ -35,4 +35,12 @@ test('Should click on the checkbox', async ({page}) => {
 
     await vkAuthPage.goto()
     await vkAuthPage.clickOnCheckbox()
+})
+
+test('A window with a list of all languages should pop up', async ({page}) => {
+    const vkAuthPage = new VKAuthPage(page)
+
+    await vkAuthPage.goto()
+    await vkAuthPage.clickOnChooseLanguageButton()
+    await expect(vkAuthPage.popupWithLanguages).toBeVisible()
 })
