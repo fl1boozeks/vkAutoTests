@@ -11,6 +11,9 @@ exports.VKAuthPage = class VKAuthPage {
         this.errorMessage = page.locator('.VkIdForm__messageError')
         this.cancelSearchButton = page.locator('.vkuiTappable__stateLayer')
         this.searchInput = page.locator('.vkuiSearch__label')
+        this.createAccountButton = page.getByRole('button', {name: 'Создать аккаунт'})
+        this.createBusinessAccountButton = page.getByRole('button', {name: 'Создать страницу для бизнеса'})
+        this.checkboxSaveUser = page.locator('.VkIdCheckbox__label')
     }
 
     async goto() {
@@ -29,5 +32,17 @@ exports.VKAuthPage = class VKAuthPage {
         await this.searchInput.fill('Дуров')
         await this.cancelSearchButton.click()
         await expect(this.searchInput).toHaveValue('')
+    }
+
+    async clickOnCreateAccountButton() {
+        await this.createAccountButton.click()
+    }
+
+    async clickOnCreateBusinessAccountButton() {
+        await this.createBusinessAccountButton.click()
+    }
+
+    async clickOnCheckbox() {
+        await this.checkboxSaveUser.click()
     }
 }
